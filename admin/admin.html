@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Untitled Document</title>
+        <link rel="stylesheet" href="cssadmin.css" />
+        <style>	
+			
+		</style>
+        <script type="text/javascript" src="jsadmin.js"></script>
+    </head>
+    
+    <body class="body">    
+    	<script>
+			window.onload=function()
+			{
+				User();
+				Product();
+				Category();	
+				Bill();																		
+			}			
+		</script>          
+   		<div class="divbao" style="position:relative;" id="divbao">
+        	<div class="Edit" id="Edit">
+            	    	
+            </div>
+            <div class="Edit1" id="Edit1">
+            	
+            </div>
+            <div class="Edit2" id="Edit2">
+            	
+            </div>
+            <div class="Edit3" id="Edit3">            
+            	
+            </div>
+    		<div class="header">
+            	<img src="hinhanh/logo_ht.jpg" />
+                <div class="header-name">Nguyễn Văn Minh Đức</div>
+                <div class="header-img"><img src="hinhanh/1.png" /></div>
+                <div class="header-logout">
+                	<a href="../trangchu/trangchu.html" onclick="Dangxuat();">Log out</a> ||
+                    <a href="../trangchu/trangchu.html">Trang chủ</a>
+                </div>
+            	<strong class="tieude">Quản lý dữ liệu</strong><br />
+            	<strong class="tieude">(Admin)</strong>                
+        	</div>
+            <div class="center">
+            	<div class="left" >
+                    <div class="quanly" id='danhmuc' onmouseover="texthover();" onmouseout="textout();">     
+                            	<img src="hinhanh/taikhoan.png" id="anhtk" />
+                                <div id="quanly-tk" onclick="showuser();">Tài khoản</div>
+                            	<img src="hinhanh/sach.png" id="anhsach" />
+                                <div id="quanly-sp" onclick="showproduct();">Sản phẩm</div>
+                            	<img src="hinhanh/nhanvien.png" id="anhnv" />
+                                <div id="quanly-nv" onclick="showuser2();">Nhân viên</div>
+                            	<img src="hinhanh/khachhang.jpg" id="anhkh" />
+                                <div id="quanly-kh" onclick="showuser1();">Khách hàng</div>
+                            	<img src="hinhanh/hoadon.png" id="anhhoadon" />
+                                <div id="quanly-hd" onclick="showbill();">Hóa đơn</div>
+                    </div>                    
+                </div>
+              	<div class="right" id="table" style="position:relative;">
+                	<div class="gthieu-giaodien"></div>
+					<div class="gioithieu">
+						<div class="gthieu-chucvu">Admin</div><br />
+						<div class="gthieu-hovaten">Họ và tên</div> <br />                   	
+						<div class="gthieu-datahovaten">Nguyễn Văn Minh Đức</div><br />
+						<div class="gthieu-gioitinh">Giới tính</div>
+						<div class="gthieu-phone">Số điện thoại</div><br />
+						<div class="gthieu-datagioitinh">Nam</div>                        
+						<div class="gthieu-dataphone">0123456789</div><br /><br />
+						<div class="gthieu-ngaysinh">Ngày sinh</div>
+						<div class="gthieu-datangaysinh">01/02/2001</div>
+					</div>
+					<img src="hinhanh/1.png" id="anhgioithieu" />					
+            	</div>                
+            </div>
+            <div class="footer">            	
+            	<div class="Timkiem" id="Timkiem">
+                	
+                </div>                              
+                <div class="Them" id="Them">
+                	
+                </div>                
+            </div>
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="test.css">
+	<script type="text/javascript">
+	function call(){
+		var lyear=document.getElementsByName("year")[0],
+		 lmonth=document.getElementsByName("month")[0],
+		 lday=document.getElementsByName("day")[0];
+		
+		var d = new Date();
+		var n = d.getFullYear();
+		for(var i=n; i>=1950 ;i--)
+			{
+				var opt = new Option();
+				opt.value = opt.text = i;
+				lyear.add(opt);
+			}
+		lyear.addEventListener("change", validate_date);
+		lmonth.addEventListener("change", validate_date);
+		
+	 function validate_date() {
+ 		var y = +lyear.value, m = lmonth.value, d = lday.value;
+ 		if (m === "2")
+     		var mlength = 28 + (!(y & 3) && ((y % 100) !== 0 || !(y & 15)));
+ 			else var mlength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1];
+ 		lday.length = 0;
+ 		for (var i = 1; i <= mlength; i++) {
+     		var opt = new Option();
+     		opt.value = opt.text = i;
+     		if (i == d) opt.selected = true;
+     		lday.add(opt);
+ 			}
+    	}
+    validate_date();
+	}
+	</script>	
+	<script>
+            function lienhe1(){
+            document.getElementById('my_dia_chi').style.display="block";
+            }
+            function lienhe2(){
+            document.getElementById('my_dia_chi').style.display='none';
+            }
+            function chitietsp(){
+                document.getElementById('bangthongke_chitietsp1').style.display='block';
+            }
+            function dau_x(){
+                document.getElementById('bangthongke_chitietsp1').style.display = 'none';
+            }
+            function phanloai(){
+                document.getElementById('phan_loai_sp').style.display = 'block';
+            }
+        	function phanloai2(){
+                document.getElementById('phan_loai_sp').style.display = 'none';
+            }
+			function phanloai3(){
+			if(document.getElementById('phan_loai_sp').style.display = 'block'){
+				document.getElementById('phan_loai_sp').style.display = 'none';}
+			}
+		function divdangnhap(){
+                document.getElementById('id01').style.display = 'block';
+            }
+		function divdangki(){
+                document.getElementById('id02').style.display = 'block';
+            }
+        function showproduct1(){
+			var productarr=JSON.parse(localStorage.getItem('product'));
+			var s='<div id="container_sanpham">';
+			for (var i=0;i<productarr.length;i++){
+				s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+productarr[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+productarr[i].productprice+' vnd</div><a onClick="showchitietsp(\''+productarr[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+				if (i%4==3 || i==productarr.length-1){
+					if (i!=productarr.length-1)
+						s+='</div><div id="container_sanpham">';
+					else
+						s+='</div>';
+				}
+				if (i%8==7)
+					break;
+			}
+			var k=Math.ceil(productarr.length/8);
+			var s1='';
+			for (var i=1;i<=k;i++){
+				s1+='<div id="'+i+'" onclick="Pageshowproduct1(\''+i+'\');doimau1(\''+i+'\');">'+i+'</div>';
+			}			
+			document.getElementById('showsp1').innerHTML=s;
+			document.getElementById('sotrang1').innerHTML=s1;
+				
+		}
+		function doimau1(page){
+				document.getElementById(page).style.backgroundColor='#F00';
+		}
+		function tktheogia(){
+			var s2='<select name="theo_gia_tien" id="timtheogia" onchange="timkiem();"><option>Tìm theo giá tiền</option><option>Dưới 100.000vnd</option><option>100.000vnd - 200.000vnd</option><option>200.000vnd - 500.000vnd</option><option>Trên 500.000vnd</option></select>';
+			document.getElementById('tk-theogia').innerHTML=s2;
+		}
+		function Pageshowproduct1(page){			
+			var b=0;
+			var productarr=JSON.parse(localStorage.getItem('product'));
+			var s='<div id="container_sanpham">';
+			for (var i=0;i<productarr.length;i++){
+				s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+productarr[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+productarr[i].productprice+' vnd</div><a onClick="showchitietsp(\''+productarr[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+				if (i%4==3 || i==productarr.length-1){
+					if (i!=productarr.length-1)
+						s+='</div><div id="container_sanpham">';
+					else
+						s+='</div>';
+				}
+				if (i%8==7 || i==productarr.length-1){
+					b++;
+					if (b==page)
+						break;
+					s='<div id="container_sanpham">';
+				}
+			}
+			var k=Math.ceil(productarr.length/8);
+			var s1='';
+			for (var i=1;i<=k;i++){
+				s1+='<div id="'+i+'" onclick="Pageshowproduct1(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+			}			
+			document.getElementById('showsp1').innerHTML=s;
+			document.getElementById('sotrang1').innerHTML=s1;
+		}
+		function text(){
+			var x=document.getElementById('them-sl').value;
+			var y;
+			x++;
+			y='Số lượng: <input type="number" id="them-sl" value="'+x+'" />';
+			document.getElementById('tang-sl').innerHTML=y;
+		}
+		function showchitietsp(id){
+			document.getElementById('bangthongke_chitietsp1').style.display='block';
+			var productarr=JSON.parse(localStorage.getItem('product'));
+			var s='';
+			for (var i=0;i<productarr.length;i++){
+				if (productarr[i].productid==id)
+					s='<span onClick="dau_x();" title="Close" class="close">&times;</span><div class="anh_chitiet"><img src="./hinhanhsp/'+productarr[i].img+'" /></div><div class="button-them" id="tang-sl">Số lượng: <input type="number" id="them-sl" value="1" /></div><div class="ten_ct">Tên</div><div class="ten_ct2"><textarea rows="2" cols="25" readonly="readonly">'+productarr[i].productname+'</textarea></div><div class="tg_ct">Tác giả: </div><div class="tg_ct2">'+productarr[i].productauthor+'</div><div class="theloai_ct">Thể loại: </div><div class="theloai_ct2">'+productarr[i].productcategory+'</div><div class="gia_ct">Giá: </div><div class="gia_ct2">'+productarr[i].productprice+' vnđ</div><div class="noidung_ct">Nội dung sản phẩm</div><div class="noidung_ct2"><textarea rows="2" cols="25" readonly="readonly">'+productarr[i].productdescribe+'</textarea></div><div class="button-them-giohang" onclick="Themvaogiohang(\''+productarr[i].productid+'\');">Thêm vào giỏ hàng</div>';
+			}
+			document.getElementById('bangthongke_chitietsp1').innerHTML=s;
+		}		
+		function Themvaogiohang(id){
+			var giohang=[];
+			if (localStorage.getItem('giohang')!=null)
+				giohang=JSON.parse(localStorage.getItem('giohang'));						
+			var productarr=JSON.parse(localStorage.getItem('product'));			
+			for (var i=0;i<productarr.length;i++){
+				if (productarr[i].productid==id){
+					var x1=productarr[i].productid;
+					var x2=productarr[i].productname;
+					var x3=productarr[i].productprice;
+					var x4=document.getElementById('them-sl').value;
+					var temp={productid:x1,productname:x2,productprice:x3,productcount:x4};
+					giohang.push(temp);
+				}
+			}			
+			for (var i=0;i<giohang.length-1;i++){
+				for (var j=i+1;j<giohang.length;j++)
+					if (giohang[i].productid==giohang[j].productid){
+						giohang.splice(j,1);
+						giohang[i].productcount++;
+					}
+			}
+			document.getElementById('sl_sp').innerHTML='<div>'+giohang.length+'</div>';
+			localStorage.setItem('giohang',JSON.stringify(giohang));
+			document.getElementById('bangthongke_chitietsp1').style.display='none';
+		}
+		function hienslgiohang(){
+			if (localStorage.getItem('giohang')!=null){
+				giohang=JSON.parse(localStorage.getItem('giohang'));
+				document.getElementById('sl_sp').innerHTML='<div>'+giohang.length+'</div>';
+			}
+			else
+				document.getElementById('sl_sp').innerHTML='<div>0</div>';
+		}
+		function setSoluong(id){
+			var x=document.getElementById(id).value;
+			var giohang=JSON.parse(localStorage.getItem('giohang'));
+			if (x==0){
+				if (confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?'))				
+					for (var i=0;i<giohang.length;i++){
+						if (giohang[i].productid==id)
+							giohang.splice(i,1);
+					}
+			}
+			else{
+				for (var i=0;i<giohang.length;i++){
+					if (giohang[i].productid==id)
+						giohang[i].productcount=x;
+				}
+			}
+			localStorage.setItem('giohang',JSON.stringify(giohang));
+			showgiohang();
+		}
+		function showgiohang(){
+			var giohang=JSON.parse(localStorage.getItem('giohang'));
+			var s='<div class="giohang"><div class="giohang-vb">Giỏ hàng</div><div class="giohang-table"><div class="giohang-table-name">Tên sản phẩm</div><div class="giohang-table-price" style="margin-left:230px">Giá tiền</div><div class="giohang-table-count">Số lượng</div></div></div>';
+			var tong=0;
+			if (localStorage.getItem('giohang')!=null){
+				for (var i=0;i<giohang.length;i++){
+					s+='<div class="giohang-sp"><div class="giohang-sp-name">'+giohang[i].productname+'</div><div class="giohang-sp-price">'+giohang[i].productprice+' vnđ</div><div class="giohang-sp-count"><div class="giohang-sp-sl" id="abc"><input type="number" value="'+giohang[i].productcount+'" id="'+giohang[i].productid+'" onclick="setSoluong(\''+giohang[i].productid+'\');" /></div></div></div>';
+					tong+=giohang[i].productprice*giohang[i].productcount;
+					if (i%10==9)
+						break;
+				}
+				var k=Math.ceil(giohang.length/8);
+				var s1='';
+				for (var i=1;i<=k;i++){
+					s1+='<div id="'+i+'" onclick="Pageshowgiohang(\''+i+'\');doimau1(\''+i+'\');">'+i+'</div>';					
+				}				
+				document.getElementById('sotrang1').innerHTML=s1;
+			}
+			var s2='<div class="giohang-tongtien">Tổng tiền: '+tong+' vnđ</div><div class="giohang-lichsu" onclick="lichsumuahang();">Lịch sử mua hàng</div><div class="giohang-thanhtoan" onclick="Thanhtoan();hienslgiohang();">Thanh toán</div>';
+			s+=s2;
+			document.getElementById('showsp1').innerHTML=s;
+			if (localStorage.getItem('giohang')==null)
+				document.getElementById('sotrang1').innerHTML='';									
+		}
+		function Pageshowgiohang(page){						
+			var b=0;
+			var giohang=JSON.parse(localStorage.getItem('giohang'));
+			var s='<div class="giohang"><div class="giohang-vb">Giỏ hàng</div><div class="giohang-table"><div class="giohang-table-name">Tên sản phẩm</div><div class="giohang-table-price" style="margin-left:230px">Giá tiền</div><div class="giohang-table-count">Số lượng</div></div></div>';
+			for (var i=0;i<giohang.length;i++){
+				s+='<div class="giohang-sp"><div class="giohang-sp-name">'+giohang[i].productname+'</div><div class="giohang-sp-price">'+giohang[i].productprice+' vnđ</div><div class="giohang-sp-count"><div class="giohang-sp-sl" id="abc"><input type="number" value="'+giohang[i].productcount+'" id="'+giohang[i].productid+'" onclick="setSoluong(\''+giohang[i].productid+'\');" /></div></div></div>';				
+				if (i%10==9 || i==giohang.length-1){
+					b++;
+					if (b==page)
+						break;
+					s='<div class="giohang"><div class="giohang-vb">Giỏ hàng</div><div class="giohang-table"><div class="giohang-table-name">Tên sản phẩm</div><div class="giohang-table-price" style="margin-left:230px">Giá tiền</div><div class="giohang-table-count">Số lượng</div></div></div>';
+				}
+			}
+			var k=Math.ceil(giohang.length/8);
+			var s1='';
+			for (var i=1;i<=k;i++){
+				s1+='<div id="'+i+'" onclick="Pageshowgiohang(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+			}
+			var s2='<div class="giohang-tongtien">Tổng tiền: '+tong+' vnđ</div><div class="giohang-lichsu" onclick="lichsumuahang();">Lịch sử mua hàng</div><div class="giohang-thanhtoan" onclick="Thanhtoan();hienslgiohang();">Thanh toán</div>';
+			s+=s2;
+			if (localStorage.getItem('giohang')==null)
+				document.getElementById('sotrang1').innerHTML='';
+			document.getElementById('showsp1').innerHTML=s;
+			document.getElementById('sotrang1').innerHTML=s1;
+		}		
+		function lichsumuahang(){
+			if (localStorage.getItem('dn')!=null){						
+				var billarr=JSON.parse(localStorage.getItem('bill'));
+				var dn=JSON.parse(localStorage.getItem('dn'));
+				var lsmuahang=[];
+				for (var i=0;i<billarr.length;i++){
+					if (billarr[i].customerid==dn[0].id)
+						lsmuahang.push(billarr[i]);					
+				}
+				var x=dn[0].name;
+				var k=Math.ceil(lsmuahang.length/12);
+				var s1='';
+				for (var i=0;i<k;i++){
+					s1+='<div id="'+(i+1)+'" onclick="Pageshowlsmuahang(\''+(i+1)+'\');doimau(\''+(i+1)+'\');">'+(i+1)+'</div>';
+				}
+				s1+='</div>';								
+				var s='<div class="billtable"><div class="billtable-id">Mã khách hàng</div><div class="billtable-name">Tên khách hàng</div><div class="billtable-date">Ngày thanh toán</div><div class="billtable-price">Giá</div></div>';
+				for (var i=0;i<lsmuahang.length;i++){
+					if (lsmuahang[i].status==true)										
+						s+='<div class="billcustomer"><div class="billcustomer-id">'+lsmuahang[i].customerid+'</div><div class="billcustomer-name">'+x+'</div><div class="billcustomer-date">'+lsmuahang[i].date+'</div><div class="billcustomer-price">'+lsmuahang[i].price+' vnđ</div></div>';
+				}
+				document.getElementById('sotrang1').innerHTML=s1;
+			}
+			if (localStorage.getItem('dn')==null){
+				s='<div class="billtable"><div class="billtable-id">Mã khách hàng</div><div class="billtable-name">Tên khách hàng</div><div class="billtable-date">Ngày thanh toán</div><div class="billtable-price">Giá</div></div>';
+				document.getElementById('sotrang1').innerHTML='';
+			}
+			document.getElementById('showsp1').innerHTML=s;			
+			
+		}
+		function Dangnhap(){
+			document.getElementById('tendn3').innerHTML='';
+			document.getElementById('pwdn3').innerHTML='';
+			var dn=[];
+			var x1=document.getElementById('nameid').value;
+			var x2=document.getElementById('password').value;
+			var x3;
+			var userarr=JSON.parse(localStorage.getItem('user'));
+			var kt=0;
+			if (x1=='' && x2==''){
+				document.getElementById('tendn3').innerHTML='<div>*Nhập tài khoản</div>';
+				document.getElementById('pwdn3').innerHTML='<div>*Nhập mật khẩu</div>';
+				return false;
+			}
+			if (x1==''){
+				document.getElementById('tendn3').innerHTML='<div>*Nhập tài khoản</div>';
+				return false;
+			}
+			if (x2==''){
+				document.getElementById('pwdn3').innerHTML='<div>*Nhập mật khẩu</div>';
+				return false;
+			}			
+			for (var i=0;i<userarr.length;i++){
+				if (userarr[i].nameid==x1 && userarr[i].password==x2)
+					if (userarr[i].status==true){
+						if (userarr[i].power=='1'){
+							kt=2;
+							x3=userarr[i].name;
+							var temp={id:x1,pass:x2,name:x3};
+							dn.push(temp);
+							break;
+						}
+						else{
+							kt=1;
+							x3=userarr[i].name;
+							var temp={id:x1,pass:x2,name:x3};
+							dn.push(temp);
+							break;
+						}
+					}									
+			}
+			if (kt==1){
+				localStorage.setItem('dn',JSON.stringify(dn));
+				document.getElementById('dang-nhap').innerHTML='<div style="margin-left:30px;"><b>'+x3+'</b></div>';
+				document.getElementById('dang-ky').innerHTML='<div onclick="Dangxuat();"><b>Log out</b></div>';
+				document.getElementById('icon-dn').innerHTML='<div class="user22"><img src="hinhanh/user.svg" /></div>';
+				document.getElementById('id01').style.display='none';
+				document.getElementById('id03').style.display='none';				
+			}
+			if (kt==2){
+				localStorage.setItem('dn',JSON.stringify(dn));
+				document.getElementById('dang-nhap').innerHTML='<div style="margin-left:30px;"><b>'+x3+'</b></div>';
+				document.getElementById('dang-ky').innerHTML='<div onclick="Dangxuat();"><b>Log out</b></div>';
+				document.getElementById('icon-dn').innerHTML='<a href="../admin/admin.html"><div class="user22"><img src="hinhanh/banhrang.svg" /></div></a>';
+				document.getElementById('id01').style.display='none';
+				document.getElementById('id03').style.display='none';
+			}
+			if (kt==0){
+				alert('Sai tài khoản hoặc mật khẩu');
+				return false;
+			}
+			showgiohang();
+		}		
+		function DangNhap(){
+			if (localStorage.getItem('dn')!=null){
+				var dn=JSON.parse(localStorage.getItem('dn'));
+				if (dn[0].id=='admin'){
+					document.getElementById('dang-nhap').innerHTML='<div style="margin-left:30px;"><b>'+dn[0].name+'</b></div>';
+					document.getElementById('dang-ky').innerHTML='<div onclick="Dangxuat();"><b>Log out</b></div>';
+					document.getElementById('icon-dn').innerHTML='<a href="../admin/admin.html"><div class="user22"><img src="hinhanh/banhrang.svg" /></div></a>';
+					document.getElementById('id03').style.display='none';
+				}
+				else{
+					document.getElementById('dang-nhap').innerHTML='<div style="margin-left:30px;"><b>'+dn[0].name+'</b></div>';
+					document.getElementById('dang-ky').innerHTML='<div onclick="Dangxuat();"><b>Log out</b></div>';
+					document.getElementById('icon-dn').innerHTML='<div class="user22"><img src="hinhanh/user.svg" /></div>';
+					document.getElementById('id03').style.display='none';
+				}
+			}
+		}
+		function Dangxuat(){
+			if (localStorage.getItem('dn')!=null){
+				localStorage.removeItem('dn');
+				document.getElementById('dang-ky').innerHTML='<div onclick="divdangki();"><b>Đăng Ký</b></div>';
+				document.getElementById('icon-dn').innerHTML='<div class="user21"><img src="hinhanh/user.svg" /></div>';
+				document.getElementById('dang-nhap').innerHTML='<div style="margin-left:140px;" onclick="divdangnhap();"><b>Đăng nhập</b></div>';
+				showproduct1();
+			}
+		}		
+		function Thanhtoan(){
+			if (localStorage.getItem('dn')!=null){
+				var dn=JSON.parse(localStorage.getItem('dn'));
+				var giohang=JSON.parse(localStorage.getItem('giohang'));
+				var billarr=JSON.parse(localStorage.getItem('bill'));
+				var x='',tong=0;
+				var date= new Date();
+				var now=date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+				for (var i=0;i<giohang.length;i++){
+					x+=giohang[i].productname+'$'+giohang[i].productcount+'&&';
+					var k=parseInt(giohang[i].productprice);
+					tong+=k*giohang[i].productcount;
+				}
+				var x2=billarr.length+1;				
+				var temp={billid:x2.toString(),customerid:dn[0].id,date:now,price:tong,productname:x,status:false};
+				billarr.push(temp);
+				localStorage.setItem('bill',JSON.stringify(billarr));
+				localStorage.removeItem('giohang');
+				showgiohang();
+			}
+			else{
+				alert('Xin mời đăng nhập để thanh toán');
+				return false;
+			}
+		}
+		function timkiem(){
+			var check=[];
+			if (localStorage.getItem('check')!=null){					
+				localStorage.removeItem('check');
+			}
+			var x=document.getElementById('timkiem3').value.toLowerCase();
+			var y=document.getElementById('timtheogia').value;
+			var k3,k4;
+			if (y=='Tìm theo giá tiền')
+				y=null;
+			else{
+				var y1=y.split(" ");
+				if (y1.length==2){
+					if (y1[0]=='Dưới'){
+						k3=0;
+						k4=99999;
+					}
+					if (y1[0]=='Trên'){
+						k3=500001;
+						k4=500001;
+					}
+				}
+				if (y1.length==3){
+					var y2=y1[0];
+					if (y2[0]=='1'){
+						k3=100000;
+						k4=200000;
+					}
+					if (y2[0]=='2'){
+						k3=200000;
+						k4=500000;
+					}
+				}
+			}
+			var x1,kt,vt,k1=0;
+			var productarr=JSON.parse(localStorage.getItem('product'));
+			var s='<div id="container_sanpham">';
+			for (var i=0; i<productarr.length;i++){
+				x1=productarr[i].productname.toLowerCase();
+				for (var j=0;j<x1.length;j++)
+					if (x1[j]==x[0]){
+						vt=j;
+						break;
+					}						
+				kt=x1.substring(vt,x.length+vt);
+				if (y==null)
+					if (kt==x)
+						check.push(productarr[i]);
+				if (y!=null){
+					if (k4>500000){
+						if (kt==x && productarr[i].productprice>k4)
+							check.push(productarr[i]);
+					}
+					else{
+						if (k4<100000){
+							if (kt==x && productarr[i].productprice<k4)
+								check.push(productarr[i]);
+						}
+						else{
+						if (kt==x && productarr[i].productprice>=k3 && productarr[i].productprice<=k4)
+							check.push(productarr[i]);
+						}
+					}					
+				}
+			}
+			for (var i=0;i<check.length;i++){
+				s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+check[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+check[i].productprice+' vnd</div><a onClick="showchitietsp(\''+check[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+				if (i%4==3 || i==check.length-1){
+					if (i!=check.length-1)
+						s+='</div><div id="container_sanpham">';
+					else
+						s+='</div>';
+				}
+				if (i%8==7)
+					break;
+			}
+			var k=Math.ceil(check.length/8);
+			var s1='';
+			for (var i=1;i<=k;i++){
+				s1+='<div id="'+i+'" onclick="Pageshowtimkiemproduct(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+			}			
+			document.getElementById('showsp1').innerHTML=s;
+			document.getElementById('sotrang1').innerHTML=s1;
+			localStorage.setItem('check',JSON.stringify(check));
+		}
+		function Pageshowtimkiemproduct(page){
+			var check=JSON.parse(localStorage.getItem('check'));
+			var b=0;
+			var s='<div id="container_sanpham">';
+			for (var i=0;i<check.length;i++){
+				s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+check[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+check[i].productprice+' vnd</div><a onClick="showchitietsp(\''+check[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+				if (i%4==3 || i==check.length-1){
+					if (i!=check.length-1)
+						s+='</div><div id="container_sanpham">';
+					else
+						s+='</div>';
+				}
+				if (i%8==7 || i==check.length-1){
+					b++;
+					if (b==page)
+						break;
+					s='<div id="container_sanpham">';
+				}
+			}
+			var k=Math.ceil(check.length/8);
+			var s1='';
+			for (var i=1;i<=k;i++){
+				s1+='<div id="'+i+'" onclick="Pageshowtimkiemproduct(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+			}			
+			document.getElementById('showsp1').innerHTML=s;
+			document.getElementById('sotrang1').innerHTML=s1;
+		}
+		function phanloaisp(){
+			var category=JSON.parse(localStorage.getItem('category'));
+			var s='';
+			for (var i=0;i<category.length;i++){
+				s+='<a onClick="phanloai2();Timtheoloaisp(\''+category[i].categoryname+'\');" style="text-decoration: none"><div class="phanloai" id="cn_va_kt">'+category[i].categoryname+'</div></a>';
+			}
+			document.getElementById('phan_loai_sp').innerHTML=s;
+		}
+		function Timtheoloaisp(name){
+			var check=[];
+			if (localStorage.getItem('check')!=null)
+				localStorage.removeItem('check');
+			var productarr=JSON.parse(localStorage.getItem('product'));
+			for (var i=0;i<productarr.length;i++){
+				if (productarr[i].productcategory==name)
+					check.push(productarr[i]);
+			}
+			var s='<div id="container_sanpham">';
+				for (var i=0;i<check.length;i++){
+					s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+check[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+check[i].productprice+' vnd</div><a onClick="showchitietsp(\''+check[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+					if (i%4==3 || i==check.length-1){
+						if (i!=check.length-1)
+							s+='</div><div id="container_sanpham">';
+						else
+							s+='</div>';
+					}
+					if (i%8==7)
+						break;
+				}
+				var k=Math.ceil(check.length/8);
+				var s1='';
+				for (var i=1;i<=k;i++){
+					s1+='<div id="'+i+'" onclick="Pageshowtheloai(\''+i+'\');doimau1(\''+i+'\');">'+i+'</div>';
+				}
+				var s2='<img src="hinhanh/timkiem.svg" /> <input style="position: absolute" type="text" id="timkiem3" onkeyup="timkiemtheoloai();" size="30" placeholder="Nhập sách cần tìm kiếm . . ." />';
+				document.getElementById('my_thanh_tk').innerHTML=s2;
+				var s3='<select name="theo_gia_tien" id="timtheogia" onchange="timkiemtheoloai();"><option>Tìm theo giá tiền</option><option>Dưới 100.000vnd</option><option>100.000vnd - 200.000vnd</option><option>200.000vnd - 500.000vnd</option><option>Trên 500.000vnd</option></select>';
+				document.getElementById('tk-theogia').innerHTML=s3;
+				document.getElementById('showsp1').innerHTML=s;
+				document.getElementById('sotrang1').innerHTML=s1;
+				localStorage.setItem('check',JSON.stringify(check));
+			}
+			function Pageshowtheloai(page){			
+				var b=0;
+				var check=JSON.parse(localStorage.getItem('check'));
+				var s='<div id="container_sanpham">';
+				for (var i=0;i<check.length;i++){
+					s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+check[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+check[i].productprice+' vnd</div><a onClick="showchitietsp(\''+check[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+					if (i%4==3 || i==check.length-1){
+						if (i!=check.length-1)
+							s+='</div><div id="container_sanpham">';
+						else
+							s+='</div>';
+					}
+					if (i%8==7 || i==check.length-1){
+						b++;
+						if (b==page)
+							break;
+						s='<div id="container_sanpham">';
+					}
+				}
+				var k=Math.ceil(check.length/8);
+				var s1='';
+				for (var i=1;i<=k;i++){
+					s1+='<div id="'+i+'" onclick="Pageshowtheloai(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+				}
+				var s2='<img src="hinhanh/timkiem.svg" /> <input style="position: absolute" type="text" id="timkiem3" onkeyup="timkiemtheoloai();" size="30" placeholder="Nhập sách cần tìm kiếm . . ." />';
+				var s3='<select name="theo_gia_tien" id="timtheogia" onchange="timkiemtheoloai();"><option>Tìm theo giá tiền</option><option>Dưới 100.000vnd</option><option>100.000vnd - 200.000vnd</option><option>200.000vnd - 500.000vnd</option><option>Trên 500.000vnd</option></select>';
+				document.getElementById('tk-theogia').innerHTML=s3;
+				document.getElementById('my_thanh_tk').innerHTML=s2;
+				document.getElementById('showsp1').innerHTML=s;
+				document.getElementById('sotrang1').innerHTML=s1;
+			}
+			function timkiemtheoloai(){
+				var checktheoloai=[];
+				if (localStorage.getItem('checktheoloai')!=null)
+					localStorage.removeItem('checktheoloai');
+				var check=JSON.parse(localStorage.getItem('check'));
+				var x=document.getElementById('timkiem3').value.toLowerCase();
+				var y=document.getElementById('timtheogia').value;
+				var k3,k4;
+				if (y=='Tìm theo giá tiền')
+					y=null;
+				else{
+					var y1=y.split(" ");
+					if (y1.length==2){
+						if (y1[0]=='Dưới'){
+							k3=0;
+							k4=99999;
+						}
+						if (y1[0]=='Trên'){
+							k3=500001;
+							k4=500001;
+						}
+					}
+					if (y1.length==3){
+						var y2=y1[0];
+						if (y2[0]=='1'){
+							k3=100000;
+							k4=200000;
+						}
+						if (y2[0]=='2'){
+							k3=200000;
+							k4=500000;
+						}
+					}
+				}
+				var x1,kt,vt,k1=0;				
+				var s='<div id="container_sanpham">';
+				for (var i=0; i<check.length;i++){
+					x1=check[i].productname.toLowerCase();
+					for (var j=0;j<x1.length;j++)
+						if (x1[j]==x[0]){
+							vt=j;
+							break;
+						}						
+					kt=x1.substring(vt,x.length+vt);
+					if (y==null)
+						if (kt==x)
+							checktheoloai.push(check[i]);
+					if (y!=null){
+						if (k4>500000){
+							if (kt==x && check[i].productprice>k4)
+								checktheoloai.push(check[i]);
+						}
+						else{
+							if (k4<100000){
+								if (kt==x && check[i].productprice<k4)
+									checktheoloai.push(check[i]);
+							}
+							else{
+							if (kt==x && check[i].productprice>=k3 && check[i].productprice<=k4)
+								checktheoloai.push(check[i]);
+							}
+						}					
+					}
+				}
+				for (var i=0;i<checktheoloai.length;i++){
+					s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+checktheoloai[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+checktheoloai[i].productprice+' vnd</div><a onClick="showchitietsp(\''+checktheoloai[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+					if (i%4==3 || i==checktheoloai.length-1){
+						if (i!=checktheoloai.length-1)
+							s+='</div><div id="container_sanpham">';
+						else
+							s+='</div>';
+					}
+					if (i%8==7)
+						break;
+				}
+				var k=Math.ceil(checktheoloai.length/8);
+				var s1='';
+				for (var i=1;i<=k;i++){
+					s1+='<div id="'+i+'" onclick="Pageshowtimkiemtheoloai(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+				}			
+				document.getElementById('showsp1').innerHTML=s;
+				document.getElementById('sotrang1').innerHTML=s1;
+				localStorage.setItem('checktheoloai',JSON.stringify(check));
+			}
+			function Pageshowtimkiemtheoloai(page){
+				var checktheoloai=JSON.parse(localStorage.getItem('checktheoloai'));
+				var b=0;
+				var s='<div id="container_sanpham">';
+				for (var i=0;i<checktheoloai.length;i++){
+					s+='<div class="sanpham" style="margin-left: 0.5%"><div id="sanpham_hinhanh"><img src="./hinhanhsp/'+checktheoloai[i].img+'" /></div><p id="p2">Giá : </p><div class="ct_sach" id="gia_sp">'+checktheoloai[i].productprice+' vnd</div><a onClick="showchitietsp(\''+checktheoloai[i].productid+'\');" style="text-decoration: none"><div id="xem_chitietsp">Xem chi tiết</div></a></div>';
+					if (i%4==3 || i==checktheoloai.length-1){
+						if (i!=checktheoloai.length-1)
+							s+='</div><div id="container_sanpham">';
+						else
+							s+='</div>';
+					}
+					if (i%8==7 || i==checktheoloai.length-1){
+						b++;
+						if (b==page)
+							break;
+						s='<div id="container_sanpham">';
+					}
+				}
+				var k=Math.ceil(checktheoloai.length/8);
+				var s1='';
+				for (var i=1;i<=k;i++){
+					s1+='<div id="'+i+'" onclick="Pageshowtimkiemproduct(\''+i+'\');doimau1(\''+i+'\')">'+i+'</div>';
+				}			
+				document.getElementById('showsp1').innerHTML=s;
+				document.getElementById('sotrang1').innerHTML=s1;
+			}
+			function Checkdangky(){
+				document.getElementById('hovatendkcheck2').innerHTML='';
+				document.getElementById('passworddkcheck2').innerHTML='';
+				document.getElementById('addressdkcheck2').innerHTML='';
+				document.getElementById('gioitinhdkcheck2').innerHTML='';
+				document.getElementById('nameiddkcheck2').innerHTML='';
+				document.getElementById('passwordrepeatdkcheck2').innerHTML='';
+				document.getElementById('phonedkcheck2').innerHTML='';
+				document.getElementById('ngaysinhcheck2').innerHTML='';
+				var x1=document.getElementById('name');
+				var x2=document.getElementById('password1');
+				var x3=document.getElementById('address');
+				var x4=document.getElementById('sex1');
+				var x5=document.getElementById('nameid1');
+				var x6=document.getElementById('pws-repeat');
+				var x7=document.getElementById('phone');				
+				var k1=document.getElementById('day1').value;
+				var k2=document.getElementById('month1').value;
+				var k3=document.getElementById('year1').value;								
+				if (x1.value==''){
+					document.getElementById('hovatendkcheck2').innerHTML='*Nhập họ và tên';
+					x1.focus();
+					return false;
+				}
+				if (x2.value==''){
+					document.getElementById('passworddkcheck2').innerHTML='*Nhập mật khẩu';
+					x2.focus();
+					return false;
+				}
+				if (x3.value==''){
+					document.getElementById('addressdkcheck2').innerHTML='*Nhập địa chỉ';
+					x3.focus();
+					return false;
+				}
+				if (x4.value==''){
+					alert(x4.value);
+					document.getElementById('gioitinhdkcheck2').innerHTML='*Chọn giới tính';
+					x4.focus();
+					return false;
+				}
+				if (x5.value==''){
+					document.getElementById('nameiddkcheck2').innerHTML='*Nhập tài khoản';
+					x5.focus();
+					return false;
+				}
+				if (x6.value==''){
+					document.getElementById('passwordrepeatdkcheck2').innerHTML='*Nhập lại mật khẩu';
+					x6.focus();
+					return false;
+				}
+				if (x7.value==''){
+					document.getElementById('phonedkcheck2').innerHTML='*Nhập số điện thoại';
+					x7.focus();
+					return false;
+				}
+				if (k1=='' || k2=='' || k3==''){
+					document.getElementById('ngaysinhcheck2').innerHTML='*Chọn ngày sinh';					
+					return false;
+				}
+				if (x2.value!=x6.value){
+					document.getElementById('passwordrepeatdkcheck2').innerHTML='*Mật khẩu nhập lại chưa giống';
+					x6.focus();
+					return false;
+				}
+				var k5=parseInt(x7.value);				
+				if (isNaN(k5)){
+					document.getElementById('phonedkcheck2').innerHTML='*Nhập sai dữ liệu';
+					x7.focus();
+					return false;
+				}
+				if (x7.value.length<10 || x7.value.length>10){
+					document.getElementById('phonedkcheck2').innerHTML='*Chỉ nhập 10 số';
+					x7.focus();
+					return false;
+				}
+			}
+			function themuser(){
+				if (Checkdangky()==false)
+					return false;
+				var x1=document.getElementById('name').value;
+				var x2=document.getElementById('password1').value;
+				var x3=document.getElementById('address').value;
+				var x4=document.getElementById('sex1').value;
+				var x5=document.getElementById('nameid1').value;				
+				var x6=document.getElementById('phone').value;
+				var x7;				
+				var k1=document.getElementById('day1').value;
+				var k2=document.getElementById('month1').value;
+				var k3=document.getElementById('year1').value;
+				x7=k1+'/'+k2+'/'+k3;
+				var userarr=JSON.parse(localStorage.getItem('user'));
+				var user={nameid:x5,password:x2,name:x1,sex:x4,dateofbirth:x7,phone:x6,address:x3,power:'0',status:true};
+				userarr.push(user);
+				localStorage.setItem('user',JSON.stringify(userarr));
+				document.getElementById('id02').style.display='none';					
+			}
+    </script>
+</head>
+<body class="page">
+	<script>
+		window.onload=function(){
+			showproduct1();
+			DangNhap();
+			hienslgiohang();
+			phanloaisp();
+			tktheogia();														
+		}
+	</script>    
+	<div class="div_bao" id="my_div_bao">
+    	<div class="header" id="my_header" style="position:relative">
+        	<div class="logo">
+                   <a href="trangchu.html"> <img src="hinhanh/logo_ht.jpg" /> </a>
+            </div>
+        	<div class="taikhoan">
+                <div class="thongbao_tk">
+                		<div class="tym" id="tym"><img src="hinhanh/tym.svg" /></div>
+                        <div class="chao_mung"><b><br />CHÀO MỪNG BẠN ĐẾN VỚI BOOK STORE</b><hr width="50%" align="center" /></div>
+                        
+							<div>
+                            	<div class="user1"><img src="hinhanh/dang_ky.svg" /></div>
+                            </div>
+                            <div class="dang_ky" id="dang-ky" >
+                            	<div onclick="divdangki();"><b>Đăng Ký</b></div>
+                            </div>                        
+							<div id="icon-dn">
+                            	<div class="user21"><img src="hinhanh/user.svg" /></div>
+                            </div>
+                            <div class="dang_nhap" id="dang-nhap">
+                            	<div style="margin-left:140px;" onclick="divdangnhap();"><b>Đăng nhập</b></div>
+                            </div>
+                </div>
+            </div>
+			
+			<div id="id01" class="modal">
+			<div class="modal-content-dn" id="from-dn1">
+			<form>
+				<div class="container-for-modal" id="from-dn2" >
+						<span onClick="document.getElementById('id01').style.display='none'" title="Close" class="close">&times;</span>
+ 				<div style="height: 85%;width: 100%">
+					<div class="container-dn">
+						<div style="text-align: center;font-size: 20px"><img style="margin-left: 10px; height: 80px;width: 80px" src="hinhanh/user.svg" /><h1>SIGN IN</h1></div>
+						<hr class="hr.space1">
+						<label for="nameid" class="tendn4"><b>Tên Đăng Nhập</b></label>
+                        <div class="tendn3" id="tendn3"></div><br>
+						<input type="text" id="nameid" placeholder="Nhập Tên Đăng Nhập" style="padding: 2% 2%; width: 95%" required><br>
+					
+						<label for="password" class ="pwdn4" style="margin-top:2%"><b>Mật Khẩu</b></label><div class="pwdn3" id="pwdn3"></div><br>
+						<input type="password" id="password" placeholder="Nhập Mật Khẩu" style="padding: 2% 2%; width: 95%" required><br>
+					<button type="button" style=" text-align: center; width:60%;background: #e0e0e1;padding: 10px 0; margin-top: 2%;margin-left: 20%" onclick="Dangnhap();"><b>Login</b></button>
+					</div>
+					</div>
+				<div style=" margin-bottom: 0 0 ; height: 15%; width: 100%; background: #929292">
+
+					
+					<div style="position: absolute; float:right; margin-top: 1.5%; margin-left: 350px; text-align: center">
+						<button type="button" class="button_dk" id="id03" onClick="document.getElementById('id02').style.display='block'">Đăng Ký</button>
+					</div>
+					
+					<div style="float:right; margin-top: 1.5%; margin-right: 2%; text-align: center">
+						<button type="button" class="button-cancel-dn" onClick="document.getElementById('id01').style.display='none'">Cancel</button>
+					</div>
+					<div style="float:left;margin-top: 2%; width: 50%">
+					<input type="checkbox" checked="checked" name="remember" style="margin: 2% 2%">Nhớ tên đăng nhập và mật khẩu
+					</div>
+					</div>
+				</div>
+			</form>
+			</div>
+			</div>
+			
+			<div id="id02" class="modal">
+			<div class="modal-content">
+			<form method="get" onsubmit="return Checkdangky();">
+				<div class="container-for-modal">
+					<span onClick="document.getElementById('id02').style.display='none'" title="Close" class="close">&times;</span>
+				<div style="width: 100%; height: 87%;background: #FFFFFF">
+				<div class="container-dn">
+					<div style="text-align: center;font-size: 35px"><b>SIGN UP</b><img style="height: 80px;width: 80px;margin-left: 20px" src="hinhanh/dang_ky.svg" /></div>
+						<hr class="hr.space1">
+				<div class="container-dk" style="padding-top: 0; padding-left: 16px">
+					<label for="name" class="hovatendkcheck"><b>Họ Và Tên</b></label>
+                    <div class="hovatendkcheck2" id="hovatendkcheck2"></div><br>
+					<input type="text" id="name" placeholder="Nhập Họ và Tên" required>
+                    <br>
+					
+					<label for="password" class="passworddkcheck"><b>Mật Khẩu</b></label>
+                    <div class="passworddkcheck2" id="passworddkcheck2"></div><br>
+					<input type="password" id="password1" placeholder="Nhập Mật Khẩu" required><br>
+					
+					<label for="address" class="addressdkcheck"><b>Địa Chỉ</b></label>
+                    <div class="addressdkcheck2" id="addressdkcheck2"></div><br>
+					<input type="text" id="address" placeholder="Nhập Địa Chỉ" required><br>
+                    
+					<div class="gioitinhdkcheck" style="float:left"><b>Giới Tính</b>
+                    <div class="gioitinhdkcheck2" id="gioitinhdkcheck2"></div>
+						<div style="width:100%">	
+						<div style="float:left">
+						<select class="DateBox" id="sex1" required>
+							<option value="">Gender</option>
+							<option value="Nam">Nam</option>
+							<option value="Nữ">Nữ</option>
+						</select>
+						</div>
+						</div>
+					</div>
+					</div>
+				<div class="container-dk" style="padding-top: 0; padding-left: 16px">
+					<label for="nameid" class="nameiddkcheck"><b>Tên Đăng Nhập</b></label>
+                    <div class="nameiddkcheck2" id="nameiddkcheck2"></div><br>
+					<input type="text" id="nameid1" placeholder="Nhập Tên Đăng Nhập" required><br>
+					
+					<label for="pws-repeat" class="passwordrepeatdkcheck"><b>Nhập Lại Mật Khẩu</b></label>
+                    <div class="passwordrepeatdkcheck2" id="passwordrepeatdkcheck2"></div><br>
+					<input type="password" id="pws-repeat" placeholder="Nhập Lại Mật Khẩu" required><br>
+					
+					<label for="phone" class ="phonedkcheck"><b>Số Điện Thoại</b></label>
+                    <div class="phonedkcheck2" id="phonedkcheck2"></div><br>
+				 	<input type="text" id="phone" placeholder="Nhập Số Điện Thoại" required><br>
+					<div class="ngaysinhcheck" style="float:left; top: 20px"><b>Ngày Sinh</b>
+                    <div class="ngaysinhcheck2" id="ngaysinhcheck2"></div>
+						<div style="width:100%">
+						<select name="month" id="month1" onchange="call()" class="DateBox" required>
+                            <option value="">Month</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+						</select>
+						<select name="day" id="day1" class="DateBox" required>
+							<option value="">Day</option>
+                        </select>
+						<select name="year" id="year1" class="DateBox" onchange="call()" required>
+							<option value="">Year</option>
+                        </select>
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+				<div style="height: 13%; width: 100%; background: #929292; margin: 0 0">
+					<div style="float:left; margin-top: 0.5%; margin-left: 2%; text-align: center">
+						<input type="reset" class="button-reset">
+						</div>
+					<div style="float: left;margin-left: 2%; margin-top: 0.5%; text-align: center">
+						<button type="button" class="button-register-dk" onclick="themuser();"><b>Register</b></button>
+					</div>
+					<div style="float:right; margin-top: 0.5%; margin-right: 2%; text-align: center">
+						<button type="button" class="button-cancel-dk" onClick="document.getElementById('id02').style.display='none'">Cancel</button>
+						</div>	
+				</div>				
+				</div>
+			</form>
+			</div>
+			</div>
+        </div>
+        <div class="thanh_tb" id="my_thanh_tb">
+                     <div class="bao_trang_chu">
+                     	<a class="tc" href="trangchu.html">
+                     <img src="hinhanh/trangchu.svg" /><div class="trang_chu">Trang Chủ</div></a></div>
+					<div class="gioithieu" id="bao_dich_vu">
+						<img src="hinhanh/bay.svg" />
+						<h1 class="h">Book Store</h1>
+					</div>
+                    <a onmouseout="lienhe2();"onmousemove="lienhe1();" style="text-decoration:none;color:#000">
+						<div class="gioithieu" id="bao_lien_he">
+							<img src="hinhanh/lienhe.svg" />
+							<div id="lien_he">Liên Hệ</div>
+						</div>
+					</a>
+        </div>
+        <div class="dia_chi" id="my_dia_chi" style="display:none;z-index:10">
+        		<ul>
+                	<li><b>Số điện thoại: (84-8) 38.354409 - 38.352309 </b></li>
+                    <li><b>Gmail: Bookstore@abc.com</b></li>
+                    <li><b>Địa chỉ: 273 An Dương Vương, q.5, TP.Hồ Chí Minh</b></li>
+					<li>Các thành viên: Nguyễn Văn Minh Đức , Lê Thị Cẩm Duyên , Nguyễn Lim Thái Hồ</li>
+                </ul>
+        </div>
+        <div class="my_main" id="my_main" style="position:relative">
+					<div class="bangthongke_chitietsp" id="bangthongke_chitietsp1" style="display: none">
+						
+					</div>
+           		<div class="my_body" id="my_body">
+                     <div class="thanh_timkiem" id="my_thanh_timkiem">
+                      		<div class="my_mua_hang" id="my_mua_hang" ><img src="hinhanh/mua_hang.svg" onclick="showgiohang();" /><div id="sl_sp"></div></div>
+                            <div class="tk_theogia" id="tk-theogia">
+                            	
+                            </div>
+                     		<div onMouseOver="phanloai();" onMouseOut="phanloai3();" class="bao_danhmuc" id="bao_danhmuc"><img src="hinhanh/list.svg" />
+									<div class="danh_muc" id="danh_muc" ><div class="dm">Danh Mục</div></div> </div>
+                            <div class="my_thanh_tk" id="my_thanh_tk"><img src="hinhanh/timkiem.svg" /> <input style="position: absolute" type="text" id="timkiem3" onkeyup="timkiem();" size="30" placeholder="Nhập sách cần tìm kiếm . . ." /></div>            
+                     </div>
+                     <div class="my_danhmuc_sp" id="my_danhmuc_sp">
+						 <div onMouseOver="phanloai();" onMouseOut="phanloai2();" class="phan_loai_sp" id="phan_loai_sp">
+						 	
+							
+						 </div>
+                     <div class="showsp" id="showsp1">
+                     	
+                  	 </div> 
+						 <div class="sotr" id="sotrang1">
+							 
+						 </div>
+                     </div>					
+				</div>
+                <div class="loi_ich">
+               			 <b style="margin-left:20px">ĐỌC SÁCH SẼ GIÚP TA: <br /></b>
+                				<div id="loiich1">Đọc sách giúp nâng cao kiến thức. ...</div>
+								<div id="loiich2">Cải thiện sự tập trung và tăng cường kỹ năng tư duy, phân tích. ...</div>
+                                <div id="loiich3">Vốn từ ngữ được mở rộng thông qua việc đọc sách. ...</div>
+                                <div id="loiich4">Kích thích tinh thần. ...</div>
+                                <div id="loiich5">Tăng tuổi thọ. ...</div> 
+                         <div id="cau_dem"><br />Sách là phần nối dài tâm hồn của chủ sách, cuốn vào lòng những chuyện bí mật, những chuyện nay giấu kín, rồi đến thời điểm thích hợp sẽ nhẹ nhàng nhả ra từng chút, từng chút một ...
+                         <br /><br />Khi những câu trả lời được phơi bày, cũng là lúc chuyện xưa sống dậy.
+                         </div>            
+                 </div>
+                <div class="sachtieubieu">
+                		<p><b>Các loại sách tiêu biểu<b><hr style="width:50%" align="center"  /></b></b></p>
+                </div>
+				<div class="slideitem">
+					<div class="container">
+					  <!-- Top Navigation -->
+					  <section id="grid" class="grid clearfix">
+						<a href="#" >
+						  <figure>
+							<img src="hinhanh/img/banner-1.jpg" />
+							<svg id="fg1" viewBox="0 0 180 320" preserveAspectRatio="none">
+							  <path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+							<figcaption >
+							  <h2>Sách giáo khoa</h2>
+							  <p>Luôn là sự lựa chọn của các bậc phụ huynh ...</p>
+							</figcaption>
+						  </figure>
+						</a>
+						<a href="#" >
+						  <figure>
+							<img src="hinhanh/img/banner-2.jpg" />
+							<svg id="fg2" viewBox="0 0 180 320" preserveAspectRatio="none">
+							  <path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+							<figcaption>
+							  <h2>Truyện trinh thám</h2>
+							  <p>Luôn là tâm điểm của các bạn trẻ , giúp kích thích sự suy đoán của bản thân ...</p>
+				
+							</figcaption>
+						  </figure>
+						</a>
+						<a href="#" >
+						  <figure >
+							<img src="hinhanh/img/banner-3.jpg" />
+							<svg id="fg3" viewBox="0 0 180 320" preserveAspectRatio="none">
+							  <path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+							<figcaption>
+                            <h2>Truyện Tranh</h2>
+							  <p>Đây là loài sách luôn đi sâu vào lòng cách bạn trẻ , giúp giải tỏa căng thẳng sau những ngày làm việc và học tập ...</p>
+							</figcaption>
+						  </figure>
+						</a>
+						<a href="#" >
+						  <figure>
+							<img src="hinhanh/img/banner-4.jpg" />
+							<svg id="fg4" viewBox="0 0 180 320" preserveAspectRatio="none">
+							  <path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+							<figcaption>
+							  <h2>Sách đời sống/tâm lý</h2>
+							  <p>Là sự lựa chọn hoàn hảo đối với những người muốn hiểu sâu về thế giới, về những mặt khác nhau của xã hội loài người ...</p>
+							</figcaption>
+						  </figure>
+						</a>
+					  </section>
+					</div>
+				  </div>
+		</div>
+		
+        <div class="my_footer" id="my_footer">
+ 			<i class="tc"><img src="hinhanh/quaylaitrangchu.svg" /></i><div class="cam_on">Cảm ơn bạn đã ghé qua</div>
+            <script>
+					var nut = document.querySelector('i');
+				//Truy xuất hình ảnh cuộn lên
+						 nut.onclick = function(){
+					var chieucaoht = self.pageYOffset;
+					// lấy chiều cao hiện tại của trang bằng pageYOffset
+					var set = chieucaoht;   // tạo biến set = chieucaoht
+					var run = setInterval(function(){ // setInterval để xác định chiều cao sau mỗi bao nhiêu giây đó
+					//function anonymous của phương thức setInterval xác định chiều cao hiện tại bằng chính nó trừ đi cái biến set * 0.035
+						chieucaoht = chieucaoht - 0.035*set;   //sau 0.015 s thì biến chieucaoht sẽ thay đổi ch đến <= 0 thì dừng
+						window.scrollTo(0,chieucaoht);  //window.scrollTo(0,chieucaoht) phương thức này sẽ cuộn chuột đến vị trí của chieucaoht sau mỗi 0.015s  
+						if(chieucaoht <= 0){
+							clearInterval(run);
+						}        
+					},15)
+        }
+            </script>
+        </div>                      
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,1172 @@
+@charset "utf-8";
+/* CSS Document */
+.body{				
+	background-image:url(hinhanh/cropped-docsachorg2.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
+}
+.header{
+	width:100%;
+	height:80px;				
+	text-align:center;
+	background-color:#FFF;
+	opacity:0.9;
+	border-radius:10px;
+	position:relative;
+}			
+.header img{
+	position:absolute;
+	width:70px;
+	height:70px;
+	margin-left:750px;
+	margin-top:4px;
+}
+.header-name{
+	position:absolute;
+	margin-left:1230px;
+	margin-top:20px;
+	font-weight:bold;
+}
+.header-img{
+	position:absolute;
+	width:50px;
+	height:50px;
+	margin-left:370px;
+}
+.header-logout{
+	position:absolute;
+	margin-left:1240px;
+	margin-top:45px;
+}
+.header-logout a{
+	color:#000;
+	text-decoration:none;
+	font-weight:bold;
+}
+.header-logout a:hover{
+	color:#0FF;
+}
+.tieude{
+	font-size:30px;
+}
+.center{				
+	height:1000px;				
+}
+
+.left{
+	float:left;
+	width:15%;
+	height:1000px;
+}							
+.quanly{
+	background-color:#000;
+	height:960px;
+	width:70px;
+	position:relative;
+	border-radius:10px;
+}
+.quanly img{
+	width:50px;
+	height:50px;
+	border-radius:10px;
+}
+#anhtk{
+	position:absolute;
+	top:55px;
+	z-index:3;
+	left:5px;
+}
+#quanly-tk{
+	position:absolute;
+	height:40px;
+	top:50px;
+	color:#FFF;
+	text-align:center;
+	padding-top:20px;
+	display:none;				
+}
+#anhsach{
+	position:absolute;
+	top:255px;
+	z-index:3;
+	left:5px;
+}
+#quanly-sp{
+	position:absolute;
+	height:40px;
+	top:250px;
+	color:#FFF;				
+	text-align:center;
+	padding-top:20px;
+	display:none;
+}
+#anhnv{
+	position:absolute;
+	top:455px;
+	z-index:3;
+	left:5px;
+}
+#quanly-nv{
+	position:absolute;
+	height:40px;
+	top:450px;
+	color:#FFF;
+	text-align:center;
+	padding-top:20px;
+	display:none;
+}
+#anhkh{
+	position:absolute;
+	top:655px;
+	z-index:3;
+	left:5px;
+}
+#quanly-kh{
+	position:absolute;
+	height:40px;
+	top:650px;
+	color:#FFF;
+	text-align:center;
+	padding-top:20px;
+	display:none;
+}
+#anhhoadon{
+	position:absolute;
+	top:855px;
+	z-index:3;
+	left:5px;
+}
+#quanly-hd{
+	position:absolute;
+	height:40px;
+	top:850px;
+	color:#FFF;
+	text-align:center;
+	padding-top:20px;
+	display:none;
+}
+@keyframes ex4{
+	0%{width:70px;}
+	100%{width:227px;}
+}
+.quanly:hover{
+	animation-name:ex4;
+	animation-duration:1.5s;
+	width:227px;
+}
+#quanly-tk:hover{
+	cursor:pointer;
+	background-color:#CCC;
+}
+#quanly-sp:hover{
+	cursor:pointer;
+	background-color:#CCC;
+}
+#quanly-nv:hover{
+	cursor:pointer;
+	background-color:#CCC;
+}
+#quanly-kh:hover{
+	cursor:pointer;
+	background-color:#CCC;
+}
+#quanly-hd:hover{
+	cursor:pointer;
+	background-color:#CCC;
+}						
+@keyframes ex{
+	0%{width:70px;}			
+	100%{width:227px;}
+}
+.right{
+	float:right;
+	width:85%;				
+	height:1000px;
+	border-radius:20px;								
+}			
+.tabletaikhoan div{
+	display:inline-table;								
+	font-size:20px;				
+	margin-top:20px;
+	border:solid 2px #000;
+	border-radius:5px;
+	text-align:center;
+	background-color:#FFF;
+	opacity:0.9;
+}
+.account{
+	opacity:0.9;				
+	margin-top:20px;
+	border:solid 2px #000;				
+	border-radius:10px;
+	height:30px;
+	background-color:#FFF;
+	color:#F00;
+}
+.account div{
+	display:inline-table;				
+	font-size:18px;				
+	margin-top:3px;				
+	border-radius:5px;
+	text-align:center;	
+}
+.tabletaikhoan-tk{
+	width:250px;
+	margin-left:35px;
+}
+.tabletaikhoan-tentk{
+	width:350px;
+	margin-left:30px;
+}
+.tabletaikhoan-mk{
+	width:250px;
+	margin-left:30px;
+}
+.tabletaikhoan-maquyen{
+	width:100px;
+	margin-left:30px;
+}
+.tabletaikhoan-chucnang{
+	width:100px;
+	margin-left:30px;
+}
+.tabletaikhoan-chucnang input{
+	margin-left:10px;
+	background-color:#0FF;
+	border-radius:5px;
+	outline:none;						
+}
+.customer{
+	border:solid 2px #000;
+	border-radius:10px;
+	width:300px;
+	height:370px;
+	margin-left:20px;
+	margin-top:20px;
+	background-color:#FFF;
+	opacity:0.9;
+	
+}
+.customer-line{
+	margin-top:20px;
+}
+.customer-line .customer{
+	display:inline-table;
+	margin-left:90px;
+}
+.thephovaten,.thepngaysinh,.thepdiachi{
+	text-align:center;
+	font-size:18px;
+}
+.thepgioitinh,.thepphone{
+	margin-left:50px;
+}
+.customer .customer-gioitinh,.customer-phone{
+	display:inline-table;
+	margin-left:53px;
+	margin-top:10px;
+}
+.customer-hovaten,.customer-ngaysinh,.customer-gioitinh,.customer-phone{
+	text-align:center;
+	border:solid 2px #000;
+	border-radius:10px;			
+}
+.customer-hovaten,.customer-ngaysinh{
+	width:230px;
+	margin-left:35px;
+}
+.customer-gioitinh{
+	width:50px;
+}
+.customer-phone{
+	width:100px;
+	margin-left:45px;
+}
+.customer-diachi{
+	border:solid 2px #000;
+	border-radius:10px;
+	margin-left:70px;
+	outline:none;
+}
+.customer input{
+	border-radius:10px;
+	width:40px;
+	margin-left:70px;
+	margin-top:10px;
+	outline:none;
+	background-color:#0FF;
+}
+.footer{
+	width:100%;				
+	background-color:#999;
+	margin-top:20px;								
+}
+.Timkiem{
+	float:left;
+	background-color:#FFF;
+	width:49%;
+	height:430px;
+	border:solid 2px #000;
+	border-radius:10px;
+	display:none;
+	background-image:url(hinhanh/107419201_4218894358184972_3558696013558642223_n.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.Timkiem div{
+	color:#F00;
+	font-weight:bold;
+}
+.tkiem{
+	text-align:center;
+	font-size:30px;
+	margin-top:20px;
+	font-weight:bold;
+}
+.Them{
+	float:right;
+	background-color:#FFF;
+	width:49%;
+	height:480px;
+	border:solid 2px #000;
+	border-radius:10px;
+	display:none;
+	background-image:url(hinhanh/118995990_969689330214194_9219117666665752738_n.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#them{
+	text-align:center;
+	font-size:30px;
+	margin-top:20px;
+	font-weight:bold;
+	color:#F00;
+}
+.timtenma div{
+	display:inline-table;
+	margin-left:110px;
+	margin-top:50px;
+	font-size:20px;
+}
+.timtenma input{
+	border-radius:10px;
+	outline:none;
+	margin-top:10px;
+	width:200px;
+	height:20px;
+	text-align:center;
+}
+.nuttimtk{
+	margin-left:330px;
+	margin-top:50px;
+	border-radius:10px;
+	width:80px;
+	outline:none;
+}
+.divform span{
+	color:#F00;
+	
+}
+.formleft{
+	float:left;
+	width:50%;			
+}
+.formright{
+	float:right;
+	width:50%;				
+}
+.mqtt div{
+	display:inline-table;
+	margin-left:0px;
+}
+.formleft div{
+	margin-left:100px;
+	color:#F00;
+	font-weight:bold;
+}
+.formleft div input{
+	text-align:center;
+	border-radius:10px;
+	outline:none;					
+}
+.formright div{				
+	color:#F00;
+	font-weight:bold;
+}
+.formright #divformright{
+	margin-left:60px;
+}
+.formright div input{
+	text-align:center;
+	border-radius:10px;
+	outline:none;
+}
+.formright textarea{
+	border-radius:10px;
+	outline:none;
+	border:solid 2px #000;
+}
+.selectmqtt{
+	border-radius:10px;
+	outline:none;
+}
+.buttonthem input{
+	margin-right:10px;
+	margin-top:30px;
+}
+.nutthem{
+	margin-left:340px;
+	border-radius:10px;
+	outline:none;
+	width:70px;
+}
+.nutthem:hover{
+	background-color:#CCC;
+}
+/*On Off*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 25px;
+}
+			
+.on {
+  position: absolute;
+  cursor: pointer;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #999;			  
+  transition: .4s;
+}
+
+.on:before {
+  position: absolute;
+  content: "";
+  top:1.5px;
+  height: 21px;
+  width: 21px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;			  
+  transition: .4s;
+}
+
+input:checked + .on {
+  background-color: #0F0;
+}
+
+input:focus + .on {
+  box-shadow: 0 0 1px #0F0;
+}
+
+input:checked + .on:before {			  
+  transform: translateX(30px);
+}
+
+.on {
+  border-radius: 34px;
+}
+
+.on:before {
+  border-radius: 50%;
+}
+/*----------------------------------------------*/
+.Edit{
+	position:absolute; 
+	width:500px; 
+	height:450px; 
+	background-color:#FFF;
+	margin-left:550px;
+	margin-top:150px;
+	border:solid 3px #000;
+	border-radius:15px;
+	display:none;
+	animation-name:ex2;
+	animation-duration:4s;
+	animation-delay:-2s;
+	z-index:8;								
+}
+.Edit div{
+	display:inline-table;
+	margin-left:150px;
+}
+.Edit1{
+	position:absolute; 
+	width:500px; 
+	height:600px; 
+	background-color:#FFF;
+	margin-left:550px;
+	margin-top:150px;
+	border:solid 3px #000;
+	border-radius:15px;
+	display:none;
+	animation-name:ex2;
+	animation-duration:4s;
+	animation-delay:-2s;
+	z-index:8;								
+}
+.p1{
+	margin-left:200px;
+	font-size:20px;
+}
+.input1{
+	margin-left:150px;
+	border-radius:10px;
+	width:200px;
+	height:20px;
+	text-align:center;
+	outline:none;
+}
+#tatedit{
+	margin-left:450px;
+	margin-top:5px;
+	outline:none;
+}
+.edit1{
+	margin-top:30px;
+	margin-left:220px;
+	width:50px;
+	border-radius:10px;
+	outline:none;			
+}
+@keyframes ex2{
+	0%{margin-top:150px;}
+	50%{margin-top:0px;}
+	100%{margin-top:150px;}
+}
+.phantrang{			
+	text-align:center;
+	position:absolute;
+	width:99%;
+	top:865px;
+	left:7px;
+}
+.phantrang div{
+	display:inline-table;
+	border:solid 2px #000;
+	border-radius:5px;
+	width:15px;
+	height:20px;
+	margin-left:5px;
+	cursor:pointer;
+	background-color:#FFF;
+	opacity:0.9;
+}
+.phantrang div:hover{
+	background-color:#0F0;
+}			
+#anhgioithieu{
+	width:300px; 
+	height:300px;
+	margin-left:300px;
+	margin-top:230px;			
+	position:absolute;
+	border-radius:10px;
+	background-color:#FFF;
+}
+.gthieu-giaodien{
+	position:absolute;
+	width:600px;
+	height:320px;
+	border:solid 2px #000;
+	border-radius:10px;
+	margin-left:290px;
+	margin-top:220px;
+	background-color:#FFF;
+}
+.gioithieu{									
+	width:300px;
+	margin-left:600px;
+	margin-top:250px;
+	position:absolute;			
+}		
+.gioithieu div{
+	font-size:20px;			
+}
+.gioithieu .gthieu-hovaten,.gthieu-ngaysinh{
+	margin-left:110px;
+}
+.gioithieu .gthieu-gioitinh,.gthieu-phone{
+	display:inline-table;
+	margin-left:40px;
+}
+.gioithieu .gthieu-datagioitinh,.gthieu-dataphone{
+	display:inline-table;
+	margin-left:58px;
+}
+.gthieu-datagioitinh,.gthieu-dataphone{
+	margin-top:10px;
+	border:solid 2px #000;
+	border-radius:10px;
+}
+.gthieu-chucvu{
+	font-size:30px;
+	font-weight:bold;
+	text-align:center;
+}
+.gthieu-datangaysinh{
+	margin-top:10px;
+	margin-left:107px;
+	border:solid 2px #000;
+	border-radius:10px;
+	width:93px;
+	margin-bottom:3px;
+}
+.gthieu-datahovaten{
+	margin-left:55px;
+	border:solid 2px #000;
+	border-radius:10px;
+	width:195px;
+}
+.customer-timkiem div{
+	margin-left:130px;
+	margin-top:20px;		
+}		
+.customer-tkiem-hovaten,.customer-tkiem-ngaysinh{
+	margin-top:20px;
+	font-size:20px;
+}
+.customer-timkiem .customer-tkiem-gioitinh,.customer-tkiem-phone{
+	display:inline-table;
+	font-size:20px;
+	margin-top:30px;
+}		
+.customer-timkiem .customer-tkiem-datagioitinh,.customer-tkiem-dataphone{
+	display:inline-table;
+	margin-left:110px;						
+}
+.customer-tkiem-hovaten input{
+	margin-left:20px;
+	width:300px;
+	border-radius:10px;
+	height:20px;
+	outline:none;
+	text-align:center;
+}
+.customer-tkiem-ngaysinh select{
+	margin-left:10px;
+	outline:none;
+	border-radius:10px;
+}
+.customer-tkiem-datagioitinh select{
+	outline:none;
+	border-radius:10px;
+	margin-left:30px;
+}
+.customer-tkiem-dataphone input{
+	outline:none;
+	border-radius:10px;
+	height:20px;
+	text-align:center;
+}
+.product .product-line{
+	display:inline-table;
+	margin-left:15px;
+	margin-top:30px;
+}
+.product-line{
+	width:400px;
+	height:300px;
+	border:solid 2px #000;
+	border-radius:10px;								
+	position:relative;
+	background-color:#FFF;
+	opacity:0.9;
+}														 
+ .product-img img{
+	width:100px;
+	height:100px;
+	margin-left:5px;								
+	position:absolute;								
+ }							 
+ .product-line div{
+	margin-top:10px;
+	font-size:17px;
+ }
+ .product-id,.product-name,.product-author,.product-dataname{
+	margin-left:100px;
+	text-align:center;
+ }
+ .product-price{
+	position:absolute;
+	top:105px;
+	left:28px;
+ }
+ .product-category,.product-describe{
+	margin-left:40px;
+ }												 
+ .product-datadescribe{
+	position:absolute;
+	left:160px;
+ }
+ .product-id input{
+	border-radius:10px;
+	outline:none;
+	text-align:center;								
+ }
+ .product-line textarea{
+	border-radius:10px;
+	outline:none;
+ }
+ .product-button input{
+	margin-top:20px;
+	margin-left:100px;
+	width:50px;
+	border-radius:10px;
+	outline:none;
+	background-color:#0FF;
+ }
+ .Edit2{
+	position:absolute; 
+	width:500px; 
+	height:600px; 
+	background-color:#FFF;
+	margin-left:550px;
+	margin-top:150px;
+	border:solid 3px #000;
+	border-radius:15px;
+	display:none;
+	animation-name:ex2;
+	animation-duration:4s;
+	animation-delay:-2s;
+	z-index:8;
+}
+.edit2-x input{			
+	margin-left:460px;
+	border-radius:5px;
+	outline:none;
+}
+.Edit2 div{
+	text-align:center;
+	font-size:18px;
+	margin-top:10px;
+}
+.edit2-dataid input{
+	border-radius:10px;
+	outline:none;
+	text-align:center;
+	width:200px;
+}
+.edit2-dataauthor input{
+	border-radius:10px;
+	outline:none;
+	text-align:center;
+	width:200px;
+}
+.edit2-dataprice input{
+	border-radius:10px;
+	outline:none;
+	text-align:center;
+	width:200px;
+}
+.edit2-dataname textarea{
+	border:solid 2px #000;
+	border-radius:10px;
+	outline:none;
+}
+.edit2-datadescribe textarea{
+	border:solid 2px #000;
+	border-radius:10px;
+	outline:none;
+}
+.edit2-category select{
+	border-radius:10px;
+	width:100px;
+	outline:none;
+}
+#filehinh img{
+	width:100px;
+	height:100px;			
+}
+.edit2-file input{			
+	width:180px;
+	outline:none;			
+}
+.Edit2 .edit2-file{
+	display:inline-table;
+	margin-left:70px;
+}
+.edit2-ok input{
+	border-radius:10px;
+	width:60px;
+}
+.product-left{
+	float:left;
+	width:50%;
+}
+.product-right{
+	float:right;
+	width:50%;
+}
+.product-add-img img{
+	width:100px;
+	height:100px;
+}
+.product-left div{
+	margin-left:100px;
+	margin-top:20px;
+	font-size:18px;
+	color:#F00;
+	font-weight:bold;
+}
+.product-right div{
+	margin-left:90px;
+	margin-top:20px;
+	font-size:18px;
+	color:#F00;
+	font-weight:bold;
+}
+.product-left input{
+	border-radius:10px;
+	width:200px;
+	height:20px;
+	text-align:center;
+	outline:none;
+}
+.product-right input{
+	border-radius:10px;
+	width:200px;
+	height:20px;
+	text-align:center;
+	outline:none;
+}
+.product-add-category select{
+	width:140px;
+	border-radius:10px;
+	outline:none;						
+}
+.product-form textarea{
+	border-radius:10px;
+	outline:none;
+	border:solid 2px #000;
+}
+.product-add-file input{
+	outline:none;
+	width:180px;
+	height:22px;
+	border-radius:0px;						
+}
+#product-add{
+	margin-left:350px;
+	margin-top:10px;
+	width:80px;
+	border-radius:10px;
+	outline:none;
+}
+.product-form span{
+	margin-left:100px;
+	font-size:16px;
+	color:#F00;
+}
+.product-search div{
+	margin-top:20px;
+}
+.Timkiem .product-search-id,.product-search-name{
+	display:inline-table;
+	margin-left:150px;
+	font-size:20px;
+}
+.product-search-name{
+	margin-left:210px;
+}
+.Timkiem .product-search-dataid,.product-search-dataname{
+	display:inline-table;
+	margin-left:100px;
+	font-size:20px;
+}
+.product-search-dataname{
+	margin-left:113px;
+}
+.product-search input{
+	border-radius:10px;
+	outline:none;
+	text-align:center;
+	width:200px;
+	height:20px;
+}
+.product-search .product-search-category,.product-search-price{
+	display:inline-table;
+	margin-left:100px;
+	font-size:20px;
+	margin-top:30px;
+}
+.product-search-price{
+	margin-left:115px;
+}
+.product-search select{
+	width:130px;
+	border-radius:10px;
+	outline:none;
+	height:20px;
+}
+.product-search-button input{
+	margin-left:330px;
+	margin-top:80px;
+	border-radius:10px;
+	outline:none;
+}
+.billtable div{
+	display:inline-table;
+	border:solid 2px #000;
+	border-radius:10px;
+	font-size:20px;						
+	text-align:center;						
+	margin-top:30px;
+	background-color:#FFF;				
+	opacity:0.9;
+}
+.billtable-id{
+	margin-left:100px;
+	height:20px;
+	width:150px;
+}
+.billtable-name{
+	margin-left:70px;
+	height:20px;
+	width:350px;
+}
+.billtable-date{
+	margin-left:50px;
+	height:20px;
+	width:150px;
+}
+.billtable-price{
+	margin-left:50px;
+	height:20px;
+	width:100px;
+}
+.billtable-status{
+	margin-left:50px;
+	height:20px;
+	width:150px;
+}
+.billcustomer div{
+	display:inline-table;
+	text-align:center;
+	font-size:18px;
+	margin-top:3px;
+}
+.billcustomer{
+	border:solid 2px #000;
+	border-radius:10px;
+	height:30px;
+	margin-top:20px;
+	background-color:#FFF;
+	color:#F00;
+	opacity:0.9;
+}
+.billcustomer:hover{
+	background-color:#9FF;
+	cursor:pointer;
+}
+.billcustomer-id{
+	margin-left:100px;
+	height:20px;
+	width:150px;
+}
+.billcustomer-name{
+	margin-left:70px;
+	height:20px;
+	width:350px;
+}
+.billcustomer-date{
+	margin-left:50px;
+	height:20px;
+	width:150px;
+}
+.billcustomer-price{
+	margin-left:50px;
+	height:20px;
+	width:100px;
+}
+.billcustomer-status{
+	margin-left:50px;
+	height:20px;
+	width:150px;
+}
+.Edit3{
+	position:absolute; 
+	width:500px; 
+	height:450px; 
+	background-color:#FFF;
+	margin-left:550px;
+	margin-top:150px;
+	border:solid 3px #000;
+	border-radius:15px;
+	display:none;
+	animation-name:ex2;
+	animation-duration:4s;
+	animation-delay:-2s;
+	z-index:8;
+}
+.edit3-nameproduct{
+	text-align:center;
+	margin-top:20px;
+	font-size:20px;
+}
+.Edit3 textarea{
+	margin-top:20px;
+	margin-left:120px;
+	border:solid 2px #000;
+	border-radius:10px;
+	outline:none;
+}
+.Edit3 .edit3-name,.edit3-dataname{
+	display:inline-table;
+	font-size:20px;
+	margin-top:20px;
+	margin-left:30px;
+}
+.Edit3 .edit3-date,.edit3-datadate{
+	display:inline-table;
+	font-size:20px;
+	margin-top:20px;
+	margin-left:30px;
+}
+.Edit3 .edit3-price,.edit3-dataprice{
+	display:inline-table;
+	font-size:20px;
+	margin-top:20px;
+	margin-left:30px;
+}
+.Edit3 .edit3-status,.edit3-datastatus{
+	display:inline-table;
+	font-size:20px;
+	margin-top:20px;
+	margin-left:30px;
+}
+.Edit3 .edit3-button1,.edit3-button2{
+	display:inline-table;
+	margin-top:50px;
+	margin-left:120px;
+}
+.edit3-button1 input{
+	border-radius:10px;
+	outline:none;
+}
+.edit3-button2 input{
+	border-radius:10px;
+	width:50px;
+	outline:none;
+}
+.edit3-x{				
+	margin-left:450px;
+	margin-top:10px;
+	width:30px;				
+}
+.edit3-x input{
+	border-radius:10px;
+	width:30px;
+	outline:none;
+}
+.searchbill{
+	font-size:20px;
+	margin-top:40px;
+	margin-left:70px;
+}
+.Timkiem .searchbill-from,.searchbill-from-data{
+	display:inline-table;
+	margin-top:20px;
+	font-size:20px;
+	margin-left:100px;
+}
+.Timkiem .searchbill-to,.searchbill-to-data{
+	display:inline-table;
+	margin-top:20px;
+	font-size:20px;
+	margin-left:100px;
+}
+.searchbill-from-data select{
+	margin-left:30px;
+	width:60px;
+	border-radius:10px;
+	outline:none;
+	
+}
+.searchbill-to-data select{
+	margin-left:30px;
+	width:60px;
+	border-radius:10px;
+	outline:none;
+	
+}
+.searchbill-button{
+	margin-top:40px;
+	margin-left:330px;
+}
+.searchbill-button input{
+	outline:none;
+	border-radius:10px;
+}
+#thongke{
+	text-align:center;
+	font-size:30px;
+	margin-top:20px;
+	font-weight:bold;
+	color:#F00;
+}
+.thongke-vb{
+	font-size:20px;
+	margin-top:40px;
+	margin-left:150px;
+	color:#F00;
+}
+.Them .thongke-from,.thongke-from-data{
+	display:inline-table;
+	font-size:20px;
+	margin-top:20px;
+	color:#F00;
+}
+.Them .thongke-to,.thongke-to-data{
+	display:inline-table;
+	font-size:20px;
+	margin-top:20px;
+	color:#F00;
+}
+.thongke-from,.thongke-to{
+	margin-left:100px;
+}
+.thongke-from-data select{
+	margin-left:50px;
+	width:70px;
+	border-radius:10px;
+	outline:none;
+}
+.thongke-to-data select{
+	margin-left:50px;
+	width:70px;
+	border-radius:10px;
+	outline:none;
+}
+.thongke-button{
+	margin-left:330px;
+	margin-top:50px;						
+	width:80px;
+}
+.thongke-button input{
+	width:80px;
+	border-radius:10px;
+	outline:none;
+}
+.thongke-button input:hover{
+	background-color:#0FF;
+	cursor:pointer;
+}
+.thongke-tong{
+	position:absolute;						
+	top:770px;
+	color:#F00;
+	border:solid 2px #000;
+	border-radius:10px;
+	background-color:#FFF;
+	opacity:0.9;
+	font-size:20px;
+	font-weight:bold;
+	left:730px;
+	height:30px;
+	padding-top:5px;
+}
